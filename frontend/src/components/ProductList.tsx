@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../api'; // Asegúrate de que está importado correctamente
+import axios from 'axios';
 
 interface Product {
   id: string;
@@ -14,37 +14,42 @@ const ProductList = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getProducts()
-      .then((data) => {
-        setProducts(data);
+    axios
+      .get('http://localhost:3000/products')
+      .then((response) => {
+        setProducts(response.data);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
         setError('Error al cargar los productos');
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div className="text-center">Cargando...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="alert alert-danger">{error}</div>;
   }
 
   return (
-    <div>
-      <h1>Lista de Productos</h1>
-      <ul>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Lista de Productos</h1>
+      <div className="row">
         {products.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>Precio: ${product.price}</p>
-          </li>
+          <div className="col-md-4 mb-4" key={product.id}>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">{product.name}</h5>
+                <p className="card-text">{product.description}</p>
+                <h6 className="card-subtitle mb-2 text-muted">Precio: ${product.price}</h6>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
