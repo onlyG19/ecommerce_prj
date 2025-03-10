@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsModule } from './products/products.module'; // Mantén la importación del ProductsModule
+import { ProductsModule } from './products/products.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [ProductsModule], // Solo importa ProductsModule aquí
+  imports: [ProductsModule, PrismaModule], 
   controllers: [AppController],
-  providers: [AppService], // No es necesario agregar PrismaService aquí, ya que se maneja dentro del ProductsModule
+  providers: [AppService], 
 })
 export class AppModule {}
