@@ -1,28 +1,9 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import CreateProduct from './components/CrearProduct';
-
+import Home from './pages/Home'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import OtherComponent from './components/OtherComponent';
-
-function Home() {
-  return (
-    <div>
-      <h1>Bienvenido a la aplicación</h1>
-      <p>Selecciona una opción para ver más:</p>
-      <ul>
-        <li>
-          <Link to="/products">Ver lista de productos</Link>
-        </li>
-        <li>
-          <Link to="/new-view">Ver nueva vista</Link>
-        </li>
-        <li>
-          <Link to="/create-product">Crear un nuevo producto</Link>
-        </li>
-      </ul>
-    </div>
-  );
-}
 
 function App() {
   return (

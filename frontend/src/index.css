@@ -1,4 +1,5 @@
-body {
+html, body {
+  height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +11,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1; /* Esto hace que el contenido principal ocupe el espacio disponible */
+}
+
+footer {
+  background-color: #343a40; /* Fondo oscuro para el footer */
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto; /* Esto asegura que el footer se mueva hacia abajo */
 }
